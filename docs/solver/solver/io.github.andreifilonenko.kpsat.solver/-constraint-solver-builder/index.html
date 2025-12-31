@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ConstraintSolverBuilder</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            solver
+                    </a>
+            </div>
+            <div class="library-version">
+0.1.0-SNAPSHOT            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":solver:dokkaHtml/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="solver::io.github.andreifilonenko.kpsat.solver/ConstraintSolverBuilder///PointingToDeclaration//636508474">
+  <div class="breadcrumbs"><a href="../../../index.html">solver</a><span class="delimiter">/</span><a href="../index.html">io.github.andreifilonenko.kpsat.solver</a><span class="delimiter">/</span><span class="current">ConstraintSolverBuilder</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Constraint</span><wbr></wbr><span>Solver</span><wbr></wbr><span><span>Builder</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ConstraintSolverBuilder</a></div><p class="paragraph">Builder for constructing and solving constraint programming models.</p><p class="paragraph">Usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val result = ConstraintSolverBuilder()<br>    .timeLimit(60)<br>    .variables { scope -&gt;<br>        mapOf(&quot;x&quot; to scope.int(0, 100), &quot;y&quot; to scope.int(0, 100))<br>    }<br>    .hard(&quot;capacity&quot;) { _, vars -&gt; vars[&quot;x&quot;]!! + vars[&quot;y&quot;]!! leq 150L }<br>    .soft(&quot;preference&quot;, weight = 10, priority = 1) { _, vars -&gt;<br>        vars[&quot;x&quot;]!! - 50L<br>    }<br>    .maximize(&quot;profit&quot;, priority = 2) { _, vars -&gt; vars[&quot;y&quot;]!! }<br>    .onSolutionReady { scope, vars -&gt; extractData(scope, vars) }<br>    .build()<br>    .solve()</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="261927306%2FConstructors%2F636508474" anchor-label="ConstraintSolverBuilder" id="261927306%2FConstructors%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-constraint-solver-builder.html"><span>Constraint</span><wbr></wbr><span>Solver</span><wbr></wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="261927306%2FConstructors%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-2080605305%2FFunctions%2F636508474" anchor-label="build" id="-2080605305%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="build.html"><span><span>build</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2080605305%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="build.html"><span class="token function">build</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-built-solver/index.html">BuiltSolver</a></div><div class="brief "><p class="paragraph">Build the solver configuration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="481490903%2FFunctions%2F636508474" anchor-label="disable" id="481490903%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="disable.html"><span><span>disable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="481490903%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="disable.html"><span class="token function">disable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Disable a constraint or objective by name. Can be called any time before solve().</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="874940450%2FFunctions%2F636508474" anchor-label="enable" id="874940450%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="enable.html"><span><span>enable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="874940450%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="enable.html"><span class="token function">enable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Enable a constraint or objective by name. Can be called any time before solve().</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="528098256%2FFunctions%2F636508474" anchor-label="getHardConstraints" id="528098256%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-hard-constraints.html"><span>get</span><wbr></wbr><span>Hard</span><wbr></wbr><span><span>Constraints</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="528098256%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-hard-constraints.html"><span class="token function">getHardConstraints</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-hard-constraint-def/index.html">HardConstraintDef</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get the current configuration of all hard constraints. Useful for inspecting the model state before solving.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1080465947%2FFunctions%2F636508474" anchor-label="getObjectives" id="-1080465947%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-objectives.html"><span>get</span><wbr></wbr><span><span>Objectives</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1080465947%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-objectives.html"><span class="token function">getObjectives</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-objective-def/index.html">ObjectiveDef</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get the current configuration of all objectives. Useful for inspecting the model state before solving.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2039553137%2FFunctions%2F636508474" anchor-label="getSoftConstraints" id="-2039553137%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-soft-constraints.html"><span>get</span><wbr></wbr><span>Soft</span><wbr></wbr><span><span>Constraints</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2039553137%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-soft-constraints.html"><span class="token function">getSoftConstraints</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-soft-constraint-def/index.html">SoftConstraintDef</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get the current configuration of all soft constraints. Useful for inspecting the model state before solving.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="193490386%2FFunctions%2F636508474" anchor-label="hard" id="193490386%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hard.html"><span><span>hard</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="193490386%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="hard.html"><span class="token function">hard</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">constraint<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/ConstraintScope///PointingToDeclaration/">ConstraintScope</span><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Add a hard constraint that must be satisfied.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1334411255%2FFunctions%2F636508474" anchor-label="logProgress" id="-1334411255%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="log-progress.html"><span>log</span><wbr></wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1334411255%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="log-progress.html"><span class="token function">logProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enable<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Enable logging of search progress.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-860923878%2FFunctions%2F636508474" anchor-label="maximize" id="-860923878%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="maximize.html"><span><span>maximize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-860923878%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="maximize.html"><span class="token function">maximize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">expr<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/ConstraintScope///PointingToDeclaration/">ConstraintScope</span><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Add a maximize objective.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1405947400%2FFunctions%2F636508474" anchor-label="minimize" id="1405947400%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="minimize.html"><span><span>minimize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1405947400%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="minimize.html"><span class="token function">minimize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">expr<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/ConstraintScope///PointingToDeclaration/">ConstraintScope</span><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Add a minimize objective.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1280012020%2FFunctions%2F636508474" anchor-label="numWorkers" id="1280012020%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-workers.html"><span>num</span><wbr></wbr><span><span>Workers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1280012020%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="num-workers.html"><span class="token function">numWorkers</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">workers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Set the number of search workers (parallel threads).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1901967991%2FFunctions%2F636508474" anchor-label="onProgress" id="-1901967991%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-progress.html"><span>on</span><wbr></wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1901967991%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-progress.html"><span class="token function">onProgress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-solve-progress/index.html">SolveProgress</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Set a callback for progress updates during solving.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="666097001%2FFunctions%2F636508474" anchor-label="onSolutionReady" id="666097001%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-solution-ready.html"><span>on</span><wbr></wbr><span>Solution</span><wbr></wbr><span><span>Ready</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="666097001%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-solution-ready.html"><span class="token function">onSolutionReady</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callback<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-constraint-solver-scope/index.html">ConstraintSolverScope</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Set a callback to extract data when a solution is found.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-933489752%2FFunctions%2F636508474" anchor-label="setPriority" id="-933489752%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-priority.html"><span>set</span><wbr></wbr><span><span>Priority</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-933489752%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-priority.html"><span class="token function">setPriority</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Set the priority of a soft constraint or objective by name. Can be called any time before solve().</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-528420140%2FFunctions%2F636508474" anchor-label="setWeight" id="-528420140%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-weight.html"><span>set</span><wbr></wbr><span><span>Weight</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-528420140%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-weight.html"><span class="token function">setWeight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">weight<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Set the weight of a soft constraint by name. Can be called any time before solve().</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1461732847%2FFunctions%2F636508474" anchor-label="soft" id="-1461732847%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="soft.html"><span><span>soft</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1461732847%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="soft.html"><span class="token function">soft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">weight<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">minBound<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">maxBound<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">penalty<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/ConstraintScope///PointingToDeclaration/">ConstraintScope</span><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Add a soft constraint with a penalty expression.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1713859538%2FFunctions%2F636508474" anchor-label="timeLimit" id="1713859538%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-limit.html"><span>time</span><wbr></wbr><span><span>Limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1713859538%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="time-limit.html"><span class="token function">timeLimit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">seconds<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Set the time limit for solving in seconds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1826210234%2FFunctions%2F636508474" anchor-label="variables" id="1826210234%2FFunctions%2F636508474" data-filterable-set=":solver:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":solver:dokkaHtml/main" data-filterable-set=":solver:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="variables.html"><span><span>variables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1826210234%2FFunctions%2F636508474"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":solver:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="variables.html"><span class="token function">variables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/ConstraintScope///PointingToDeclaration/">ConstraintScope</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span data-unresolved-link="io.github.andreifilonenko.kpsat.dsl/Expr///PointingToDeclaration/">Expr</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConstraintSolverBuilder</a></div><div class="brief "><p class="paragraph">Define variables using a lambda that receives the scope.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2026 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

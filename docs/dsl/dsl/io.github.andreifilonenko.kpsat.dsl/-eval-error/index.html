@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>EvalError</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            dsl
+                    </a>
+            </div>
+            <div class="library-version">
+0.1.0-SNAPSHOT            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dsl:dokkaHtml/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="dsl::io.github.andreifilonenko.kpsat.dsl/EvalError///PointingToDeclaration//312847570">
+  <div class="breadcrumbs"><a href="../../../index.html">dsl</a><span class="delimiter">/</span><a href="../index.html">io.github.andreifilonenko.kpsat.dsl</a><span class="delimiter">/</span><span class="current">EvalError</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Eval</span><wbr></wbr><span><span>Error</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="index.html">EvalError</a> : <a href="../-dsl-error/index.html">DslError</a></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-variable-not-set/index.html">VariableNotSet</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-type-mismatch/index.html">TypeMismatch</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-index-out-of-bounds/index.html">IndexOutOfBounds</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-null-value/index.html">NullValue</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-invalid-operand/index.html">InvalidOperand</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-division-by-zero/index.html">DivisionByZero</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1049195703%2FClasslikes%2F312847570" anchor-label="DivisionByZero" id="-1049195703%2FClasslikes%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-division-by-zero/index.html"><span>Division</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Zero</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1049195703%2FClasslikes%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-division-by-zero/index.html">DivisionByZero</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>context<span class="token operator">: </span><a href="../-error-context/index.html">ErrorContext</a></span></span><span class="token punctuation">)</span> : <a href="index.html">EvalError</a></div><div class="brief "><p class="paragraph">Division by zero</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1660690381%2FClasslikes%2F312847570" anchor-label="IndexOutOfBounds" id="1660690381%2FClasslikes%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-index-out-of-bounds/index.html"><span>Index</span><wbr></wbr><span>Out</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Bounds</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1660690381%2FClasslikes%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-index-out-of-bounds/index.html">IndexOutOfBounds</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>size<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>context<span class="token operator">: </span><a href="../-error-context/index.html">ErrorContext</a></span></span><span class="token punctuation">)</span> : <a href="index.html">EvalError</a></div><div class="brief "><p class="paragraph">Index out of bounds for array/list access</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="336177635%2FClasslikes%2F312847570" anchor-label="InvalidOperand" id="336177635%2FClasslikes%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-invalid-operand/index.html"><span>Invalid</span><wbr></wbr><span><span>Operand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="336177635%2FClasslikes%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-invalid-operand/index.html">InvalidOperand</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>operation<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>operandType<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>context<span class="token operator">: </span><a href="../-error-context/index.html">ErrorContext</a></span></span><span class="token punctuation">)</span> : <a href="index.html">EvalError</a></div><div class="brief "><p class="paragraph">Cannot perform operation on given type</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1527502717%2FClasslikes%2F312847570" anchor-label="NullValue" id="-1527502717%2FClasslikes%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-null-value/index.html"><span>Null</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1527502717%2FClasslikes%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-null-value/index.html">NullValue</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>path<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>context<span class="token operator">: </span><a href="../-error-context/index.html">ErrorContext</a></span></span><span class="token punctuation">)</span> : <a href="index.html">EvalError</a></div><div class="brief "><p class="paragraph">Null encountered where value was expected</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1380747085%2FClasslikes%2F312847570" anchor-label="TypeMismatch" id="1380747085%2FClasslikes%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-type-mismatch/index.html"><span>Type</span><wbr></wbr><span><span>Mismatch</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1380747085%2FClasslikes%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-type-mismatch/index.html">TypeMismatch</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>expected<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>actual<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>context<span class="token operator">: </span><a href="../-error-context/index.html">ErrorContext</a></span></span><span class="token punctuation">)</span> : <a href="index.html">EvalError</a></div><div class="brief "><p class="paragraph">Expected one type but got another</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1212902230%2FClasslikes%2F312847570" anchor-label="VariableNotSet" id="-1212902230%2FClasslikes%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-variable-not-set/index.html"><span>Variable</span><wbr></wbr><span>Not</span><wbr></wbr><span><span>Set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1212902230%2FClasslikes%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-variable-not-set/index.html">VariableNotSet</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>varId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>varType<span class="token operator">: </span><a href="../-var-type/index.html">VarType</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>context<span class="token operator">: </span><a href="../-error-context/index.html">ErrorContext</a></span></span><span class="token punctuation">)</span> : <a href="index.html">EvalError</a></div><div class="brief "><p class="paragraph">Variable was referenced but never assigned a value</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-2053997128%2FProperties%2F312847570" anchor-label="context" id="-2053997128%2FProperties%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-dsl-error/context.html"><span><span>context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2053997128%2FProperties%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-dsl-error/context.html">context</a><span class="token operator">: </span><a href="../-error-context/index.html">ErrorContext</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="856327776%2FProperties%2F312847570" anchor-label="message" id="856327776%2FProperties%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-dsl-error/message.html"><span><span>message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="856327776%2FProperties%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-dsl-error/message.html">message</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-2065143203%2FFunctions%2F312847570" anchor-label="toReport" id="-2065143203%2FFunctions%2F312847570" data-filterable-set=":dsl:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dsl:dokkaHtml/main" data-filterable-set=":dsl:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../to-report.html"><span>to</span><wbr></wbr><span><span>Report</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2065143203%2FFunctions%2F312847570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dsl:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../-dsl-error/index.html">DslError</a><span class="token punctuation">.</span><a href="../to-report.html"><span class="token function">toReport</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Convert any DslError to a human-readable report</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

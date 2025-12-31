@@ -1,0 +1,351 @@
+# School Timetabling Data
+# This file defines rooms, subjects, teachers, student groups, and curriculum
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TIMESLOT CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════════
+timeslotConfig:
+  days: [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY]
+  periods:
+    - { number: 1, start: "08:00", end: "08:50" }
+    - { number: 2, start: "09:00", end: "09:50" }
+    - { number: 3, start: "10:10", end: "11:00" }  # After break
+    - { number: 4, start: "11:10", end: "12:00" }
+    - { number: 5, start: "13:00", end: "13:50" }  # After lunch
+    - { number: 6, start: "14:00", end: "14:50" }
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ROOMS - 14 rooms across 4 buildings
+# ═══════════════════════════════════════════════════════════════════════════
+rooms:
+  # Main Building - Standard classrooms
+  - id: 0
+    name: "Main 101"
+    building: Main
+    floor: 1
+    capacity: 30
+    capabilities: [PROJECTOR, WHITEBOARD, WHEELCHAIR_ACCESSIBLE]
+    
+  - id: 1
+    name: "Main 102"
+    building: Main
+    floor: 1
+    capacity: 28
+    capabilities: [SMARTBOARD, WHEELCHAIR_ACCESSIBLE]
+    
+  - id: 2
+    name: "Main 103"
+    building: Main
+    floor: 1
+    capacity: 32
+    capabilities: [PROJECTOR, WHITEBOARD]
+    
+  - id: 3
+    name: "Main 201"
+    building: Main
+    floor: 2
+    capacity: 28
+    capabilities: [PROJECTOR, WHITEBOARD]
+    
+  - id: 4
+    name: "Main 202"
+    building: Main
+    floor: 2
+    capacity: 30
+    capabilities: [SMARTBOARD]
+
+  # Science Wing - Laboratories (capacity increased to fit all student groups)
+  - id: 5
+    name: "Chem Lab"
+    building: Science
+    floor: 1
+    capacity: 28
+    capabilities: [CHEMICAL_LAB, PROJECTOR, WHEELCHAIR_ACCESSIBLE]
+    
+  - id: 6
+    name: "Physics Lab"
+    building: Science
+    floor: 1
+    capacity: 28
+    capabilities: [PHYSICS_LAB, PROJECTOR, SMARTBOARD, WHEELCHAIR_ACCESSIBLE]
+    
+  - id: 7
+    name: "Bio Lab"
+    building: Science
+    floor: 2
+    capacity: 28
+    capabilities: [BIOLOGY_LAB, PROJECTOR, WHEELCHAIR_ACCESSIBLE]
+    
+  - id: 8
+    name: "Computer Lab"
+    building: Science
+    floor: 2
+    capacity: 30
+    capabilities: [COMPUTER_STATIONS, PROJECTOR, WHEELCHAIR_ACCESSIBLE]
+
+  # Arts Building
+  - id: 9
+    name: "Art Studio"
+    building: Arts
+    floor: 1
+    capacity: 28
+    capabilities: [ART_SUPPLIES, OUTDOOR_ACCESS, WHEELCHAIR_ACCESSIBLE]
+    
+  - id: 10
+    name: "Music Room"
+    building: Arts
+    floor: 1
+    capacity: 28
+    capabilities: [MUSIC_EQUIPMENT, AUDIO_SYSTEM, WHEELCHAIR_ACCESSIBLE]
+
+  # Sports Complex
+  - id: 11
+    name: "Gymnasium"
+    building: Sports
+    floor: 0
+    capacity: 60
+    capabilities: [GYM_EQUIPMENT, WHEELCHAIR_ACCESSIBLE]
+    
+  - id: 12
+    name: "Sports Field"
+    building: Sports
+    floor: 0
+    capacity: 100
+    capabilities: [OUTDOOR_ACCESS]
+    
+  - id: 13
+    name: "Dance Studio"
+    building: Sports
+    floor: 1
+    capacity: 28
+    capabilities: [AUDIO_SYSTEM, WHEELCHAIR_ACCESSIBLE]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SUBJECTS - 10 subjects with room requirements
+# id = shortName for convenience
+# ═══════════════════════════════════════════════════════════════════════════
+subjects:
+  - id: Math
+    name: "Mathematics"
+    requiredCapabilities: []
+    preferredCapabilities: [SMARTBOARD]
+    difficulty: 5
+    preferredTime: MORNING
+    color: "hsl(220, 70%, 75%)"
+
+  - id: Eng
+    name: "English Literature"
+    requiredCapabilities: []
+    preferredCapabilities: [PROJECTOR]
+    difficulty: 3
+    preferredTime: MORNING
+    color: "hsl(45, 80%, 75%)"
+
+  - id: Chem
+    name: "Chemistry"
+    requiredCapabilities: [CHEMICAL_LAB]
+    preferredCapabilities: [PROJECTOR]
+    difficulty: 5
+    preferredTime: MORNING
+    color: "hsl(150, 60%, 70%)"
+
+  - id: Phys
+    name: "Physics"
+    requiredCapabilities: [PHYSICS_LAB]
+    preferredCapabilities: [SMARTBOARD]
+    difficulty: 5
+    preferredTime: MORNING
+    color: "hsl(280, 60%, 75%)"
+
+  - id: Bio
+    name: "Biology"
+    requiredCapabilities: [BIOLOGY_LAB]
+    preferredCapabilities: []
+    difficulty: 4
+    preferredTime: MORNING
+    color: "hsl(120, 50%, 70%)"
+
+  - id: CS
+    name: "Computer Science"
+    requiredCapabilities: [COMPUTER_STATIONS]
+    preferredCapabilities: [PROJECTOR]
+    difficulty: 4
+    preferredTime: ANY
+    color: "hsl(200, 70%, 70%)"
+
+  - id: Art
+    name: "Art"
+    requiredCapabilities: [ART_SUPPLIES]
+    preferredCapabilities: [OUTDOOR_ACCESS]
+    difficulty: 2
+    preferredTime: AFTERNOON
+    color: "hsl(340, 70%, 75%)"
+
+  - id: Mus
+    name: "Music"
+    requiredCapabilities: [MUSIC_EQUIPMENT]
+    preferredCapabilities: [AUDIO_SYSTEM]
+    difficulty: 2
+    preferredTime: AFTERNOON
+    color: "hsl(30, 80%, 75%)"
+
+  - id: PE
+    name: "Physical Education"
+    requiredCapabilities: []
+    preferredCapabilities: [GYM_EQUIPMENT, OUTDOOR_ACCESS]
+    difficulty: 1
+    preferredTime: AFTERNOON
+    color: "hsl(0, 70%, 75%)"
+
+  - id: Hist
+    name: "History"
+    requiredCapabilities: []
+    preferredCapabilities: [PROJECTOR]
+    difficulty: 3
+    preferredTime: ANY
+    color: "hsl(35, 60%, 70%)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TEACHERS - 10 teachers with subject specializations
+# subjects reference subject ids (shortNames)
+# ═══════════════════════════════════════════════════════════════════════════
+teachers:
+  - id: 0
+    name: "Dr. Smith"
+    subjects: [Math]
+    prefersMorning: true
+    maxLessonsPerDay: 5
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 1
+    name: "Ms. Johnson"
+    subjects: [Eng, Hist]
+    prefersMorning: true
+    maxLessonsPerDay: 6
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 2
+    name: "Prof. Chen"
+    subjects: [Chem]
+    prefersMorning: true
+    maxLessonsPerDay: 4
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 3
+    name: "Dr. Williams"
+    subjects: [Phys]
+    prefersMorning: true
+    maxLessonsPerDay: 4
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 4
+    name: "Ms. Brown"
+    subjects: [Bio]
+    prefersMorning: true
+    maxLessonsPerDay: 6
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 5
+    name: "Mr. Davis"
+    subjects: [CS]
+    prefersMorning: false
+    maxLessonsPerDay: 6
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 6
+    name: "Ms. Garcia"
+    subjects: [Art]
+    prefersMorning: false
+    maxLessonsPerDay: 6
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 7
+    name: "Mr. Miller"
+    subjects: [Mus]
+    prefersMorning: false
+    maxLessonsPerDay: 6
+    unavailableDays: []
+    needsAccessibleRoom: false
+
+  - id: 8
+    name: "Coach Wilson"
+    subjects: [PE]
+    prefersMorning: false
+    maxLessonsPerDay: 6
+    unavailableDays: []
+    needsAccessibleRoom: true
+
+  - id: 9
+    name: "Mrs. Taylor"
+    subjects: [Math, Eng]
+    prefersMorning: true
+    maxLessonsPerDay: 6
+    unavailableDays: [FRIDAY]
+    needsAccessibleRoom: false
+
+# ═══════════════════════════════════════════════════════════════════════════
+# STUDENT GROUPS - 6 classes across grades 9-11
+# ═══════════════════════════════════════════════════════════════════════════
+# Reduced to 3 student groups for faster solving
+studentGroups:
+  - id: 0
+    name: "Grade 9A"
+    size: 24
+    grade: 9
+    hasWheelchairStudent: false
+
+  - id: 1
+    name: "Grade 10A"
+    size: 22
+    grade: 10
+    hasWheelchairStudent: false
+
+  - id: 2
+    name: "Grade 11A"
+    size: 20
+    grade: 11
+    hasWheelchairStudent: false
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CURRICULUM - Lessons per week for each subject (by subject id)
+# ═══════════════════════════════════════════════════════════════════════════
+# Reduced curriculum for faster solving (22 -> 12 lessons per group)
+curriculum:
+  Math: 3
+  Eng: 2
+  Chem: 1
+  Phys: 1
+  Bio: 1
+  CS: 1
+  Art: 1
+  Mus: 1
+  PE: 1
+  Hist: 0
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DISTANCE CONFIGURATION - Walking times between buildings
+# ═══════════════════════════════════════════════════════════════════════════
+distanceConfig:
+  sameBuildingPerFloor: 1  # minutes per floor difference
+  buildingDistances:
+    - buildings: [Main, Science]
+      baseMinutes: 3
+    - buildings: [Main, Arts]
+      baseMinutes: 5
+    - buildings: [Science, Arts]
+      baseMinutes: 6
+    - buildings: [Main, Sports]
+      baseMinutes: 4
+    - buildings: [Science, Sports]
+      baseMinutes: 5
+    - buildings: [Arts, Sports]
+      baseMinutes: 7
+  defaultBetweenBuildings: 5
+

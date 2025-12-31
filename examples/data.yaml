@@ -1,0 +1,737 @@
+# Combined data file for resource scheduling
+departments:
+  - id: ENGINEERING
+    name: Engineering Department
+  - id: DESIGN
+    name: Design Department
+  - id: PRODUCT
+    name: Product Department
+  - id: OPERATIONS
+    name: Operations Department
+
+positions:
+  - id: JUNIOR_DEV
+    name: Junior Developer
+    skillLevel: DEV_L1
+    hourlyRate: 50.0
+  - id: MID_DEV
+    name: Mid Developer
+    skillLevel: DEV_L2
+    hourlyRate: 75.0
+  - id: SENIOR_DEV
+    name: Senior Developer
+    skillLevel: DEV_L3
+    hourlyRate: 100.0
+  - id: JUNIOR_DESIGNER
+    name: Junior Designer
+    skillLevel: UX_L1
+    hourlyRate: 55.0
+  - id: MID_DESIGNER
+    name: Mid Designer
+    skillLevel: UX_L2
+    hourlyRate: 80.0
+  - id: SENIOR_DESIGNER
+    name: Senior Designer
+    skillLevel: UX_L3
+    hourlyRate: 105.0
+  - id: PM
+    name: Product Manager
+    skillLevel: PM_L2
+    hourlyRate: 90.0
+  - id: BA
+    name: Business Analyst
+    skillLevel: BA_L2
+    hourlyRate: 70.0
+
+bankHolidaySets:
+  - id: UK
+    name: UK Bank Holidays
+    holidays:
+      - 2025-10-06
+  - id: US
+    name: US Bank Holidays
+    holidays:
+      - 2025-10-13
+
+resources:
+  - id: 1
+    name: Zara Blackwood
+    departmentId: ENGINEERING
+    positionId: JUNIOR_DEV
+    skills:
+      - DEV_L1
+    bankHolidaySetId: UK
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 2
+    name: Felix Moonstone
+    departmentId: ENGINEERING
+    positionId: MID_DEV
+    skills:
+      - DEV_L1
+      - DEV_L2
+    bankHolidaySetId: UK
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 3
+    name: Nova Brightwell
+    departmentId: ENGINEERING
+    positionId: SENIOR_DEV
+    skills:
+      - DEV_L1
+      - DEV_L2
+      - DEV_L3
+    bankHolidaySetId: US
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 4
+    name: River Ashford
+    departmentId: DESIGN
+    positionId: JUNIOR_DESIGNER
+    skills:
+      - UX_L1
+    bankHolidaySetId: UK
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 5
+    name: Luna Silverstone
+    departmentId: DESIGN
+    positionId: MID_DESIGNER
+    skills:
+      - UX_L1
+      - UX_L2
+    bankHolidaySetId: UK
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 6
+    name: Atlas Thornfield
+    departmentId: DESIGN
+    positionId: SENIOR_DESIGNER
+    skills:
+      - UX_L1
+      - UX_L2
+      - UX_L3
+    bankHolidaySetId: US
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 6
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 7
+    name: Sage Windermere
+    departmentId: PRODUCT
+    positionId: PM
+    skills:
+      - PM_L2
+    bankHolidaySetId: UK
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 8
+    name: Phoenix Ravenscroft
+    departmentId: OPERATIONS
+    positionId: BA
+    skills:
+      - BA_L2
+    bankHolidaySetId: UK
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 9
+    name: Echo Silverstream
+    departmentId: ENGINEERING
+    positionId: JUNIOR_DEV
+    skills:
+      - DEV_L1
+    bankHolidaySetId: US
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+  - id: 10
+    name: Aurora Nightshade
+    departmentId: DESIGN
+    positionId: MID_DESIGNER
+    skills:
+      - UX_L1
+      - UX_L2
+    bankHolidaySetId: UK
+    weeklyAvailability:
+      MONDAY: 8
+      TUESDAY: 8
+      WEDNESDAY: 8
+      THURSDAY: 8
+      FRIDAY: 8
+      SATURDAY: 0
+      SUNDAY: 0
+
+projects:
+  - id: 1001
+    name: CloudSync Platform
+    projectCode: CS-2025
+    departmentId: ENGINEERING
+    startDate: 2025-09-22
+    endDate: 2025-10-17
+    priority: 1
+  - id: 1002
+    name: Mobile App Redesign
+    projectCode: MAR-401
+    departmentId: DESIGN
+    startDate: 2025-09-22
+    endDate: 2025-10-31
+    priority: 2
+  - id: 1003
+    name: Data Analytics Dashboard
+    projectCode: DAD-789
+    departmentId: ENGINEERING
+    startDate: 2025-09-22
+    endDate: 2025-10-23
+    priority: 1
+  - id: 1004
+    name: User Research Initiative
+    projectCode: URI-202
+    departmentId: DESIGN
+    startDate: 2025-09-22
+    endDate: 2025-10-28
+    priority: 3
+  - id: 1005
+    name: Payment Gateway Integration
+    projectCode: PGI-550
+    departmentId: ENGINEERING
+    startDate: 2025-09-22
+    endDate: 2025-10-17
+    priority: 1
+  - id: 1006
+    name: Customer Portal Redesign
+    projectCode: CPR-301
+    departmentId: DESIGN
+    startDate: 2025-09-22
+    endDate: 2025-10-24
+    priority: 2
+  - id: 1007
+    name: Product Strategy Sprint
+    projectCode: PSS-100
+    departmentId: PRODUCT
+    startDate: 2025-09-22
+    endDate: 2025-10-10
+    priority: 1
+  - id: 1008
+    name: API Documentation Project
+    projectCode: ADP-220
+    departmentId: OPERATIONS
+    startDate: 2025-09-22
+    endDate: 2025-10-17
+    priority: 2
+  - id: 1009
+    name: Performance Optimization
+    projectCode: POP-660
+    departmentId: ENGINEERING
+    startDate: 2025-09-22
+    endDate: 2025-10-17
+    priority: 1
+  - id: 1010
+    name: Brand Identity Refresh
+    projectCode: BIR-450
+    departmentId: DESIGN
+    startDate: 2025-09-22
+    endDate: 2025-10-17
+    priority: 2
+
+# Activity dependencies define precedence constraints:
+# An activity can only start after all its dependencies are complete
+activities:
+  # CloudSync Platform: Architecture -> API Development -> Integration Testing
+  - id: 1
+    code: CS-2025-001
+    name: Architecture Design
+    order: 1
+    projectId: 1001
+    dependencies: []  # No predecessors
+    estimatedHours: 13
+    rate: 180.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: ENGINEERING
+    requestPositionId: MID_DEV
+    requestSkillLevel1: DEV_L2
+    requestSkillLevel2: DEV_L3
+  - id: 2
+    code: CS-2025-002
+    name: API Development
+    order: 2
+    projectId: 1001
+    dependencies: [1]  # Depends on Architecture Design
+    estimatedHours: 18
+    rate: 160.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+    requestSkillLevel2: DEV_L2
+  - id: 3
+    code: CS-2025-003
+    name: Integration Testing
+    order: 3
+    projectId: 1001
+    dependencies: [2]  # Depends on API Development
+    estimatedHours: 11
+    rate: 140.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+
+  # Mobile App Redesign: Wireframing -> Visual Design -> Prototyping
+  - id: 4
+    code: MAR-401-001
+    name: Wireframing
+    order: 1
+    projectId: 1002
+    dependencies: []  # No predecessors
+    estimatedHours: 14
+    rate: 150.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: DESIGN
+    requestPositionId: JUNIOR_DESIGNER
+    requestSkillLevel1: UX_L1
+    requestSkillLevel2: UX_L2
+  - id: 5
+    code: MAR-401-002
+    name: Visual Design
+    order: 2
+    projectId: 1002
+    dependencies: [4]  # Depends on Wireframing
+    estimatedHours: 19
+    rate: 170.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: DESIGN
+    requestPositionId: MID_DESIGNER
+    requestSkillLevel1: UX_L2
+    requestSkillLevel2: UX_L3
+  - id: 6
+    code: MAR-401-003
+    name: Prototyping
+    order: 3
+    projectId: 1002
+    dependencies: [5]  # Depends on Visual Design
+    estimatedHours: 12
+    rate: 160.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: DESIGN
+    requestPositionId: JUNIOR_DESIGNER
+    requestSkillLevel1: UX_L1
+    requestSkillLevel2: UX_L2
+
+  # Data Analytics Dashboard: Database Schema -> Frontend Implementation
+  - id: 7
+    code: DAD-789-001
+    name: Database Schema
+    order: 1
+    projectId: 1003
+    dependencies: []  # No predecessors
+    estimatedHours: 17
+    rate: 175.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: ENGINEERING
+    requestPositionId: MID_DEV
+    requestSkillLevel1: DEV_L2
+    requestSkillLevel2: DEV_L3
+  - id: 8
+    code: DAD-789-002
+    name: Frontend Implementation
+    order: 2
+    projectId: 1003
+    dependencies: [7]  # Depends on Database Schema
+    estimatedHours: 22
+    rate: 155.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+    requestSkillLevel2: DEV_L2
+
+  # User Research Initiative: User Interviews -> Data Analysis
+  - id: 9
+    code: URI-202-001
+    name: User Interviews
+    order: 1
+    projectId: 1004
+    dependencies: []  # No predecessors
+    estimatedHours: 13
+    rate: 120.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: DESIGN
+    requestPositionId: JUNIOR_DESIGNER
+    requestSkillLevel1: UX_L1
+  - id: 10
+    code: URI-202-002
+    name: Data Analysis
+    order: 2
+    projectId: 1004
+    dependencies: [9]  # Depends on User Interviews
+    estimatedHours: 7
+    rate: 130.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: DESIGN
+    requestPositionId: MID_DESIGNER
+    requestSkillLevel1: UX_L2
+
+  # Payment Gateway Integration: Requirements -> Backend -> Security Audit -> Deployment
+  - id: 11
+    code: PGI-550-001
+    name: Requirements Analysis
+    order: 1
+    projectId: 1005
+    dependencies: []
+    estimatedHours: 16
+    rate: 140.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: OPERATIONS
+    requestPositionId: BA
+    requestSkillLevel1: BA_L2
+  - id: 12
+    code: PGI-550-002
+    name: Backend Integration
+    order: 2
+    projectId: 1005
+    dependencies: [11]
+    estimatedHours: 32
+    rate: 180.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: ENGINEERING
+    requestPositionId: SENIOR_DEV
+    requestSkillLevel1: DEV_L3
+  - id: 13
+    code: PGI-550-003
+    name: Security Audit
+    order: 3
+    projectId: 1005
+    dependencies: [12]
+    estimatedHours: 24
+    rate: 190.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: ENGINEERING
+    requestPositionId: MID_DEV
+    requestSkillLevel1: DEV_L2
+    requestSkillLevel2: DEV_L3
+  - id: 14
+    code: PGI-550-004
+    name: Production Deployment
+    order: 4
+    projectId: 1005
+    dependencies: [13]
+    estimatedHours: 16
+    rate: 160.0
+    isCommercialRate: true
+    budgetNumbers: 4
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+    requestSkillLevel2: DEV_L2
+
+  # Customer Portal Redesign: UX Research -> Design System -> Component Library -> Implementation
+  - id: 15
+    code: CPR-301-001
+    name: UX Research
+    order: 1
+    projectId: 1006
+    dependencies: []
+    estimatedHours: 20
+    rate: 145.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: DESIGN
+    requestPositionId: MID_DESIGNER
+    requestSkillLevel1: UX_L2
+  - id: 16
+    code: CPR-301-002
+    name: Design System
+    order: 2
+    projectId: 1006
+    dependencies: [15]
+    estimatedHours: 28
+    rate: 175.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: DESIGN
+    requestPositionId: SENIOR_DESIGNER
+    requestSkillLevel1: UX_L3
+  - id: 17
+    code: CPR-301-003
+    name: Component Library
+    order: 3
+    projectId: 1006
+    dependencies: [16]
+    estimatedHours: 36
+    rate: 165.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: ENGINEERING
+    requestPositionId: MID_DEV
+    requestSkillLevel1: DEV_L2
+  - id: 18
+    code: CPR-301-004
+    name: Portal Implementation
+    order: 4
+    projectId: 1006
+    dependencies: [17]
+    estimatedHours: 40
+    rate: 155.0
+    isCommercialRate: true
+    budgetNumbers: 4
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+    requestSkillLevel2: DEV_L2
+
+  # Product Strategy Sprint: Market Analysis -> Roadmap Planning -> Stakeholder Alignment
+  - id: 19
+    code: PSS-100-001
+    name: Market Analysis
+    order: 1
+    projectId: 1007
+    dependencies: []
+    estimatedHours: 24
+    rate: 200.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: PRODUCT
+    requestPositionId: PM
+    requestSkillLevel1: PM_L2
+  - id: 20
+    code: PSS-100-002
+    name: Roadmap Planning
+    order: 2
+    projectId: 1007
+    dependencies: [19]
+    estimatedHours: 20
+    rate: 190.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: PRODUCT
+    requestPositionId: PM
+    requestSkillLevel1: PM_L2
+  - id: 21
+    code: PSS-100-003
+    name: Stakeholder Alignment
+    order: 3
+    projectId: 1007
+    dependencies: [20]
+    estimatedHours: 16
+    rate: 180.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: OPERATIONS
+    requestPositionId: BA
+    requestSkillLevel1: BA_L2
+
+  # API Documentation Project: Content Audit -> Technical Writing -> Developer Portal
+  - id: 22
+    code: ADP-220-001
+    name: Content Audit
+    order: 1
+    projectId: 1008
+    dependencies: []
+    estimatedHours: 18
+    rate: 130.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: OPERATIONS
+    requestPositionId: BA
+    requestSkillLevel1: BA_L2
+  - id: 23
+    code: ADP-220-002
+    name: Technical Writing
+    order: 2
+    projectId: 1008
+    dependencies: [22]
+    estimatedHours: 32
+    rate: 140.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: ENGINEERING
+    requestPositionId: MID_DEV
+    requestSkillLevel1: DEV_L2
+  - id: 24
+    code: ADP-220-003
+    name: Developer Portal
+    order: 3
+    projectId: 1008
+    dependencies: [23]
+    estimatedHours: 24
+    rate: 150.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+
+  # Performance Optimization: Profiling -> Database Tuning -> Caching Layer -> Load Testing
+  - id: 25
+    code: POP-660-001
+    name: Performance Profiling
+    order: 1
+    projectId: 1009
+    dependencies: []
+    estimatedHours: 16
+    rate: 185.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: ENGINEERING
+    requestPositionId: SENIOR_DEV
+    requestSkillLevel1: DEV_L3
+  - id: 26
+    code: POP-660-002
+    name: Database Tuning
+    order: 2
+    projectId: 1009
+    dependencies: [25]
+    estimatedHours: 24
+    rate: 175.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: ENGINEERING
+    requestPositionId: MID_DEV
+    requestSkillLevel1: DEV_L2
+    requestSkillLevel2: DEV_L3
+  - id: 27
+    code: POP-660-003
+    name: Caching Implementation
+    order: 3
+    projectId: 1009
+    dependencies: [26]
+    estimatedHours: 20
+    rate: 165.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+    requestSkillLevel2: DEV_L2
+  - id: 28
+    code: POP-660-004
+    name: Load Testing
+    order: 4
+    projectId: 1009
+    dependencies: [27]
+    estimatedHours: 16
+    rate: 145.0
+    isCommercialRate: true
+    budgetNumbers: 4
+    requestDepartmentId: ENGINEERING
+    requestPositionId: JUNIOR_DEV
+    requestSkillLevel1: DEV_L1
+
+  # Brand Identity Refresh: Brand Audit -> Visual Identity -> Asset Library -> Guidelines
+  - id: 29
+    code: BIR-450-001
+    name: Brand Audit
+    order: 1
+    projectId: 1010
+    dependencies: []
+    estimatedHours: 14
+    rate: 160.0
+    isCommercialRate: true
+    budgetNumbers: 1
+    requestDepartmentId: DESIGN
+    requestPositionId: MID_DESIGNER
+    requestSkillLevel1: UX_L2
+  - id: 30
+    code: BIR-450-002
+    name: Visual Identity
+    order: 2
+    projectId: 1010
+    dependencies: [29]
+    estimatedHours: 24
+    rate: 180.0
+    isCommercialRate: true
+    budgetNumbers: 2
+    requestDepartmentId: DESIGN
+    requestPositionId: SENIOR_DESIGNER
+    requestSkillLevel1: UX_L3
+  - id: 31
+    code: BIR-450-003
+    name: Asset Library
+    order: 3
+    projectId: 1010
+    dependencies: [30]
+    estimatedHours: 20
+    rate: 155.0
+    isCommercialRate: true
+    budgetNumbers: 3
+    requestDepartmentId: DESIGN
+    requestPositionId: JUNIOR_DESIGNER
+    requestSkillLevel1: UX_L1
+  - id: 32
+    code: BIR-450-004
+    name: Brand Guidelines
+    order: 4
+    projectId: 1010
+    dependencies: [31]
+    estimatedHours: 12
+    rate: 145.0
+    isCommercialRate: true
+    budgetNumbers: 4
+    requestDepartmentId: DESIGN
+    requestPositionId: MID_DESIGNER
+    requestSkillLevel1: UX_L2
+

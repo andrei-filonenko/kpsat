@@ -1,0 +1,35 @@
+# Build outputs
+build/
+**/build/
+**/bin/
+
+# Gradle
+.gradle/
+**/.gradle/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Kotlin
+*.class
+*.jar
+*.war
+*.ear
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+
+**/test-results/
+
+**/kotlin/dsl/build/
+**/kotlin/solver/build/

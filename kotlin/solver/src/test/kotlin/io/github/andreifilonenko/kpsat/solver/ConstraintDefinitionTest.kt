@@ -1,6 +1,5 @@
 package io.github.andreifilonenko.kpsat.solver
 
-import arrow.core.getOrElse
 import io.github.andreifilonenko.kpsat.dsl.ConstraintScope
 import io.github.andreifilonenko.kpsat.dsl.Expr
 import io.github.andreifilonenko.kpsat.dsl.ExprNode
@@ -387,7 +386,7 @@ class ConstraintDefinitionTest {
         @Test
         fun `CompiledExpr Constant toLong works`() {
             val compiled = CompiledExpr.Constant(100L)
-            assertEquals(100L, compiled.toLong().getOrElse { fail(it.message) })
+            assertEquals(100L, compiled.toLong())
         }
 
         @Test

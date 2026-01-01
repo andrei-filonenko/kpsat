@@ -21,11 +21,11 @@ import io.github.andreifilonenko.kpsat.dsl.sum
  *     .variables { scope ->
  *         mapOf("x" to scope.int(0, 100), "y" to scope.int(0, 100))
  *     }
- *     .hard("capacity") { vars -> vars["x"]!! + vars["y"]!! leq 150L }
- *     .soft("preference", weight = 10, priority = 1) { vars -> 
+ *     .hard("capacity") { _, vars -> vars["x"]!! + vars["y"]!! leq 150L }
+ *     .soft("preference", weight = 10, priority = 1) { _, vars -> 
  *         vars["x"]!! - 50L 
  *     }
- *     .maximize("profit", priority = 2) { vars -> vars["y"]!! }
+ *     .maximize("profit", priority = 2) { _, vars -> vars["y"]!! }
  *     .onSolutionReady { scope, vars -> extractData(scope, vars) }
  *     .build()
  *     .solve()
@@ -77,36 +77,20 @@ class ConstraintSolverBuilder {
     
     /**
      * Define variables using a lambda that receives the scope.
-     * Context receiver version (for IDE usage).
+     * @param block Lambda that takes ConstraintScope and returns a map of variable names to expressions
      */
-    fun variables(block: context(ConstraintScope) () -> Map<String, Expr>): ConstraintSolverBuilder = apply {
-        variableDefinitions.add { scope -> block(scope) }
-    }
-    
-    /**
-     * Define variables using a lambda with explicit scope parameter.
-     * Use this version in Jupyter notebooks.
-     */
-    fun variablesOf(block: (ConstraintScope) -> Map<String, Expr>): ConstraintSolverBuilder = apply {
+    fun variables(block: (ConstraintScope) -> Map<String, Expr>): ConstraintSolverBuilder = apply {
         variableDefinitions.add(block)
     }
     
     // ============ HARD CONSTRAINTS ============
     
     /**
-     * Add a hard constraint.
+     * Add a hard constraint that must be satisfied.
      * @param name Name for debugging/reporting
-     * @param constraint Lambda that produces a boolean expression (must be true)
+     * @param constraint Lambda that takes (scope, variables) and produces a boolean expression (must be true)
      */
-    fun hard(name: String, constraint: context(ConstraintScope) (Map<String, Expr>) -> Expr): ConstraintSolverBuilder = apply {
-        hardConstraintDefs.add(HardConstraintDef(name, constraint = { scope, vars -> constraint(scope, vars) }))
-    }
-    
-    /**
-     * Add a hard constraint with explicit scope parameter.
-     * Use this version in Jupyter notebooks.
-     */
-    fun hardOf(name: String, constraint: (ConstraintScope, Map<String, Expr>) -> Expr): ConstraintSolverBuilder = apply {
+    fun hard(name: String, constraint: (ConstraintScope, Map<String, Expr>) -> Expr): ConstraintSolverBuilder = apply {
         hardConstraintDefs.add(HardConstraintDef(name, constraint))
     }
     
@@ -119,31 +103,9 @@ class ConstraintSolverBuilder {
      * @param priority Priority level (higher = more important)
      * @param minBound Optional minimum bound for normalization
      * @param maxBound Optional maximum bound for normalization
-     * @param penalty Lambda that produces a penalty expression (>= 0 typically)
+     * @param penalty Lambda that takes (scope, variables) and produces a penalty expression (>= 0 typically)
      */
     fun soft(
-        name: String,
-        weight: Int = 1,
-        priority: Int = 0,
-        minBound: Long? = null,
-        maxBound: Long? = null,
-        penalty: context(ConstraintScope) (Map<String, Expr>) -> Expr,
-    ): ConstraintSolverBuilder = apply {
-        softConstraintDefs.add(SoftConstraintDef(
-            name = name,
-            weight = weight,
-            priority = priority,
-            minBound = minBound,
-            maxBound = maxBound,
-            penalty = { scope, vars -> penalty(scope, vars) },
-        ))
-    }
-    
-    /**
-     * Add a soft constraint with explicit scope parameter.
-     * Use this version in Jupyter notebooks.
-     */
-    fun softOf(
         name: String,
         weight: Int = 1,
         priority: Int = 0,
@@ -167,21 +129,9 @@ class ConstraintSolverBuilder {
      * Add a maximize objective.
      * @param name Name for debugging/reporting
      * @param priority Priority level for lexicographic ordering
-     * @param expr Lambda that produces the expression to maximize
+     * @param expr Lambda that takes (scope, variables) and produces the expression to maximize
      */
     fun maximize(
-        name: String,
-        priority: Int = 0,
-        expr: context(ConstraintScope) (Map<String, Expr>) -> Expr,
-    ): ConstraintSolverBuilder = apply {
-        objectiveDefs.add(ObjectiveDef(name, ObjectiveDirection.MAXIMIZE, priority, expr = { scope, vars -> expr(scope, vars) }))
-    }
-    
-    /**
-     * Add a maximize objective with explicit scope parameter.
-     * Use this version in Jupyter notebooks.
-     */
-    fun maximizeOf(
         name: String,
         priority: Int = 0,
         expr: (ConstraintScope, Map<String, Expr>) -> Expr,
@@ -193,21 +143,9 @@ class ConstraintSolverBuilder {
      * Add a minimize objective.
      * @param name Name for debugging/reporting
      * @param priority Priority level for lexicographic ordering
-     * @param expr Lambda that produces the expression to minimize
+     * @param expr Lambda that takes (scope, variables) and produces the expression to minimize
      */
     fun minimize(
-        name: String,
-        priority: Int = 0,
-        expr: context(ConstraintScope) (Map<String, Expr>) -> Expr,
-    ): ConstraintSolverBuilder = apply {
-        objectiveDefs.add(ObjectiveDef(name, ObjectiveDirection.MINIMIZE, priority, expr = { scope, vars -> expr(scope, vars) }))
-    }
-    
-    /**
-     * Add a minimize objective with explicit scope parameter.
-     * Use this version in Jupyter notebooks.
-     */
-    fun minimizeOf(
         name: String,
         priority: Int = 0,
         expr: (ConstraintScope, Map<String, Expr>) -> Expr,

@@ -178,6 +178,17 @@ class FullRcpspModelTest {
         
         println("\nBuilding RCPSP model...")
         
+        // Pre-compute minimum theoretical days per activity (for fragmentation penalty)
+        val minDaysPerActivity = data.activities.associate { act ->
+            act.id to ((act.estimatedHours + 7) / 8)  // ceiling division
+        }
+        
+        // Pre-compute consecutive unit pairs within each activity (for resource consistency)
+        data class UnitPair(val u1: WorkUnit, val u2: WorkUnit)
+        val consecutiveUnitPairs = data.activities.flatMap { act ->
+            workUnits.filter { it.activityId == act.id }.zipWithNext().map { (u1, u2) -> UnitPair(u1, u2) }
+        }
+        
         // Build the exact model from the notebook
         val rcpspModel = ConstraintSolverBuilder()
             .timeLimit(120)
@@ -299,46 +310,30 @@ class FullRcpspModelTest {
                 max(data.activities.map { vars["act_end_${it.id}"]!! })
             }
             
-            // === SOFT CONSTRAINT: Penalize activity splitting ===
-            .penalize(
-                name = "activity_resource_splitting",
-                weight = 50,
-                priority = 0,
-                minBound = 0L,
-                maxBound = data.activities.size.toLong() * (numResources - 1),
+            // === SOFT CONSTRAINT: Penalize activity fragmentation ===
+            .soft(
+                name = "activity_fragmentation",
+                weight = 5,
+                priority = 1
             ) { _, vars ->
                 sum(data.activities) { act ->
-                    val actUnits = workUnits.filter { it.activityId == act.id }
-                    val resourcesUsed = sum(0 until numResources) { resIdx ->
-                        val usesThisResource = exists(actUnits) { unit ->
-                            vars["res_${unit.id}"]!! eq resIdx.toLong()
-                        }
-                        iif(usesThisResource, 1L, 0L)
-                    }
-                    resourcesUsed - 1L
+                    val span = vars["act_end_${act.id}"]!! - vars["act_start_${act.id}"]!! + 1L
+                    val minDays = minDaysPerActivity[act.id]!!.toLong()
+                    // Penalty = days beyond minimum
+                    span - minDays
                 }
             }
             
-            // === SOFT CONSTRAINT: Reward consecutive work days ===
-            .reward(
-                name = "consecutive_work_days",
+            // === SOFT CONSTRAINT: Penalize resource switches within activity ===
+            .soft(
+                name = "resource_consistency",
                 weight = 10,
-                priority = 0,
-                minBound = 0L,
-                maxBound = (numResources * (numDates - 1)).toLong(),
+                priority = 1
             ) { _, vars ->
-                sum(0 until numResources) { resIdx ->
-                    sum(0 until numDates - 1) { dayIdx ->
-                        val worksToday = exists(workUnits) { unit ->
-                            (vars["res_${unit.id}"]!! eq resIdx.toLong()) and
-                            (vars["date_${unit.id}"]!! eq dayIdx.toLong())
-                        }
-                        val worksTomorrow = exists(workUnits) { unit ->
-                            (vars["res_${unit.id}"]!! eq resIdx.toLong()) and
-                            (vars["date_${unit.id}"]!! eq (dayIdx + 1).toLong())
-                        }
-                        iif(worksToday and worksTomorrow, 1L, 0L)
-                    }
+                // Count pairs where resource differs between consecutive work units
+                sum(consecutiveUnitPairs) { pair ->
+                    val different = vars["res_${pair.u1.id}"]!! neq vars["res_${pair.u2.id}"]!!
+                    different  // 1 if different, 0 if same
                 }
             }
             
@@ -349,59 +344,47 @@ class FullRcpspModelTest {
         println("    - Resource capacity: max $maxHoursPerDay hours/day per resource")
         println("    - Precedence: ${dependencyPairs.size} activity dependencies")
         println("    - Skill requirements: activities matched to qualified resources")
+        println("  Soft constraints:")
+        println("    - Activity fragmentation: penalize span beyond minimum days (weight=5)")
+        println("    - Resource consistency: penalize resource switches within activity (weight=10)")
         println("  Objectives:")
         println("    - Priority 2: Minimize makespan")
         println("    - Priority 1: Maximize contiguous blocks")
-        println("  Soft constraints:")
-        println("    - Activity splitting penalty (weight=50)")
-        println("    - Consecutive work days reward (weight=10)")
         
         // Solve
         println("\nSolving RCPSP model...")
-        val solveResult = rcpspModel.solve()
+        val result = rcpspModel.solve()
         
-        solveResult.fold(
-            { error ->
-                println("Solve returned error: ${error.message}")
-                println("Error type: ${error::class.simpleName}")
-                println("Error context: ${error.context}")
-                
-                // For debugging, we want to see the actual error
-                throw AssertionError("Solver returned error: ${error.message}")
-            },
-            { result ->
-                println("Solve completed with status: ${result.status}")
-                println("Message: ${result.message}")
-                
-                when (result.status) {
-                    SolveStatus.OPTIMAL -> {
-                        println("✓ Optimal solution found!")
-                        println("  Objective value: ${result.objectiveValue}")
-                    }
-                    SolveStatus.FEASIBLE -> {
-                        println("~ Feasible solution found (may not be optimal)")
-                        println("  Objective value: ${result.objectiveValue}")
-                    }
-                    SolveStatus.INFEASIBLE -> {
-                        println("✗ No feasible solution - constraints cannot be satisfied")
-                        // This is valid - model might be over-constrained
-                    }
-                    SolveStatus.MODEL_INVALID -> {
-                        println("✗ Model invalid: ${result.message}")
-                        throw AssertionError("Model invalid: ${result.message}")
-                    }
-                    SolveStatus.UNKNOWN -> {
-                        println("? Status unknown - likely timeout or solver issue")
-                        println("  Message: ${result.message}")
-                        // Check if it's a timeout or something else
-                    }
-                }
-                
-                // Assert we got some result (not an internal error)
-                assertNotEquals(SolveStatus.MODEL_INVALID, result.status, 
-                    "Model should be valid: ${result.message}")
+        println("Solve completed with status: ${result.status}")
+        println("Message: ${result.message}")
+        
+        when (result.status) {
+            SolveStatus.OPTIMAL -> {
+                println("✓ Optimal solution found!")
+                println("  Objective value: ${result.objectiveValue}")
             }
-        )
+            SolveStatus.FEASIBLE -> {
+                println("~ Feasible solution found (may not be optimal)")
+                println("  Objective value: ${result.objectiveValue}")
+            }
+            SolveStatus.INFEASIBLE -> {
+                println("✗ No feasible solution - constraints cannot be satisfied")
+                // This is valid - model might be over-constrained
+            }
+            SolveStatus.MODEL_INVALID -> {
+                println("✗ Model invalid: ${result.message}")
+                throw AssertionError("Model invalid: ${result.message}")
+            }
+            SolveStatus.UNKNOWN -> {
+                println("? Status unknown - likely timeout or solver issue")
+                println("  Message: ${result.message}")
+                // Check if it's a timeout or something else
+            }
+        }
+        
+        // Assert we got some result (not an internal error)
+        assertNotEquals(SolveStatus.MODEL_INVALID, result.status, 
+            "Model should be valid: ${result.message}")
     }
 }
 
